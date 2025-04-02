@@ -1,4 +1,4 @@
-# API-CP Crime Court Hearing Cases
+# API CP Crime Court Hearing Cases
 
 The Court Hearing Cases API provides details of a criminal case. 
 
