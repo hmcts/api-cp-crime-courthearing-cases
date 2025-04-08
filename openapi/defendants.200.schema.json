@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://justice.gov.uk/Defendants.schema.json",
+  "title": "Defendants",
+  "description": "List of defendants for a given case",
+  "type": "object",
+  "properties": {
+    "defendants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "defendantId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the defendant"
+          },
+          "name": {
+            "type": "string",
+            "description": "Full name of the defendant"
+          }
+        },
+        "required": ["defendantId", "name"],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": ["defendants"],
+  "additionalProperties": false
+}
