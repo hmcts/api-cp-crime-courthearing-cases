@@ -28,11 +28,11 @@ jobs:
       - name: Lint JSON schema example responses
         run: |
           shopt -s globstar nullglob
-          files=(openapi/**/*.example.json)
-          if [ ${#files[@]} -eq 0 ]; then
-            echo "✅ No example JSON files to lint."
+          files=$(find openapi -name "*.schema.json")
+          if [ -z "$files" ]; then
+            echo "✅ No '*.schema.json' files to lint."
           else
-            for file in "${files[@]}"; do
+            for file in $files; do
               echo "Linting $file"
               jsonlint -q "$file" || exit 1
             done
