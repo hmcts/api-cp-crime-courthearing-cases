@@ -42,7 +42,7 @@ jobs:
         run: |
           for schema in openapi/*.schema.json; do
             # Replace ".schema.json" with ".example.json" to get the data file name
-            datafile="${schema/.schema.json/.example.json}"
+            datafile="${schema/.schema.json/.schema.example.json}"
           
             if [ -f "$datafile" ]; then
               echo "Validating $datafile against schema $schema"
