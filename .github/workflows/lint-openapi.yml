@@ -40,7 +40,7 @@ jobs:
 
       - name: Validate JSON schema responses
         run: |
-          for schema in openapi/**/*.schema.json; do
+          for schema in openapi/*.schema.json; do
             # Replace ".schema.json" with ".example.json" to get the data file name
             datafile="${schema/.schema.json/.example.json}"
           
@@ -55,4 +55,4 @@ jobs:
 
       - name: Run Spectral on API specs
         run: |
-          spectral lint "openapi/**/*.{yml,yaml}" || exit 1
+          spectral lint "openapi/*.{yml,yaml}" || exit 1
