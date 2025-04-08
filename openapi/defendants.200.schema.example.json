@@ -1,0 +1,12 @@
+{
+  "defendants": [
+    {
+      "defendantId": "ba7c37c4-ef33-4bbf-8c3c-3942bfea0f11",
+      "name": "Jane Doe"
+    },
+    {
+      "defendantId": "92a6b634-6fbd-4f3d-a1c7-328a2feeff99",
+      "name": "John Smith"
+    }
+  ]
+}
