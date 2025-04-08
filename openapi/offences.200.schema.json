@@ -1,21 +1,20 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://justice.gov.uk/OffenceJudiciaryResults.schema.json",
-  "title": "OffenceJudiciaryResults",
-  "type": "array",
-  "items": {
-    "title": "OffenceJudiciaryResult",
-    "description": "Offence-level Judiciary Result",
-    "type": "object",
-    "properties": {
-      "resultText": {
-        "description": "Result",
-        "title": "Judiciary Result",
+  "$id": "http://justice.gov.uk/Offences.schema.json",
+  "title": "OffenceList",
+  "description": "List of offence IDs associated with a defendant in a case",
+  "type": "object",
+  "properties": {
+    "offences": {
+      "type": "array",
+      "items": {
         "type": "string",
-        "default": ""
-      }
-    },
-    "required": ["resultText"],
-    "additionalProperties": false
-  }
+        "description": "Unique identifier of an offence"
+      },
+      "minItems": 1,
+      "description": "Array of offence IDs"
+    }
+  },
+  "required": ["offences"],
+  "additionalProperties": false
 }
