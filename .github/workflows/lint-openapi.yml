@@ -25,12 +25,12 @@ jobs:
       - name: Install dependencies
         run: npm install -g @stoplight/spectral-cli ajv-cli jsonlint
 
-      - name: Lint JSON schema responses
+      - name: Lint JSON schema example responses
         run: |
-          shopt -s nullglob
-          files=(openapi/**/*.schema.json)
+          shopt -s globstar nullglob
+          files=(openapi/**/*.example.json)
           if [ ${#files[@]} -eq 0 ]; then
-            echo "✅ No schema JSON files to lint."
+            echo "✅ No example JSON files to lint."
           else
             for file in "${files[@]}"; do
               echo "Linting $file"
@@ -41,13 +41,15 @@ jobs:
       - name: Validate JSON schema responses
         run: |
           for schema in openapi/**/*.schema.json; do
-            datafile="${schema}"
+            # Replace ".schema.json" with ".example.json" to get the data file name
+            datafile="${schema/.schema.json/.example.json}"
           
             if [ -f "$datafile" ]; then
               echo "Validating $datafile against schema $schema"
+              # strict mode is off because the "example" attribute is useful for openapi specs
               ajv --spec=draft2020 --strict=false -s "$schema" -d "$datafile" || exit 1
             else
-              echo "⚠️ Skipping: no schema file found for $schema"
+              echo "⚠️ Skipping: no example file found for $schema"
             fi
           done
 
