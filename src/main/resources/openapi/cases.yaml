@@ -34,7 +34,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "https://raw.githubusercontent.com/hmcts/api-cp-crime-courthearing-cases/refs/heads/master/openapi/caseresults.200.schema.json"
+                $ref: caseresults.schema.json
 
               example:
                 - resultText: "Guilty plea accepted by the court."
