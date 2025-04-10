@@ -1,0 +1,45 @@
+openapi: 3.0.0
+servers:
+
+  - description: APIHub Auto Mocking Cases API
+    url: https://virtserver.swaggerhub.com/HMCTS-DTS/api-cp-crime-cases/0.0.1
+
+info:
+  title: CP Crime Cases Api
+  description: Read-only API to retrieve case data, including defendants, offences, and results.
+  version: 0.0.1
+  contact:
+    email: no-reply@hmcts.com
+  license:
+    name: Apache 2.0
+    url: 'https://opensource.org/licenses/MIT'
+
+paths:
+
+  /cases/{case_id}/results:
+    get:
+      description: Retrieve results directly associated with a case.
+      operationId: getCaseLevelResults
+      parameters:
+        - in: path
+          name: case_id
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the case
+
+      responses:
+        '200':
+          description: Case-level results
+          content:
+            application/json:
+              schema:
+                $ref: caseresults.schema.json
+
+              example:
+                - resultText: "Guilty plea accepted by the court."
+                - resultText: "Sentenced to 12 months custody."
+                - resultText: "Fine of £500 imposed."
+
+        '404':
+          description: Case not found
