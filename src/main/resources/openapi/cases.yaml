@@ -11,7 +11,7 @@ info:
   contact:
     email: no-reply@hmcts.com
   license:
-    name: Apache 2.0
+    name: MIT
     url: 'https://opensource.org/licenses/MIT'
 
 paths:
@@ -43,3 +43,6 @@ paths:
 
         '404':
           description: Case not found
+
+        '400':
+          description: bad input parameter
