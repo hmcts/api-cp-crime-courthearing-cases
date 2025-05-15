@@ -15,6 +15,9 @@ The hierarchy reflects how legal data is typically organized, allowing consumers
 
 All endpoints are **read-only** (`GET` requests only), making this API ideal for applications that need to **view, analyze, or report on legal case information**.
 
+## Documentation
+
+Further documentation see the [API Template repository readme](https://github.com/hmcts/api-cp-template?tab=readme-ov-file#api-cp-template-repository).
 
 ## License
 
