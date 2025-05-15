@@ -41,7 +41,7 @@ components:
     CaseJudiciaryResponse:
       type: object
       properties:
-        results:
+        caseResults:
           type: array
           items:
             $ref: "#/components/schemas/CaseJudiciaryResult"
