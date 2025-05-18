@@ -23,7 +23,7 @@ class OpenAPIConfigurationLoaderTest {
 
         Info info = openAPI.getInfo();
         assertNotNull(info);
-        assertEquals("Crime Court Hearing Cases API", info.getTitle());
+        assertEquals("Common Platform API Crime Court Hearing Cases", info.getTitle());
         assertEquals("API to retrieve court hearing case data, including defendants, offences, and results.", info.getDescription());
 
         String apiGitHubRepository = "api-cp-crime-courthearing-cases";
