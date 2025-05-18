@@ -4,7 +4,7 @@ servers:
     url: https://virtserver.swaggerhub.com/HMCTS-DTS/api-cp-crime-courthearing-cases/0.0.0
 
 info:
-  title: Crime Court Hearing Cases API
+  title: Common Platform API Crime Court Hearing Cases
   description: API to retrieve court hearing case data, including defendants, offences, and results.
   version: 0.0.0
   contact:
