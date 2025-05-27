@@ -18,6 +18,8 @@ paths:
     get:
       description: Retrieve results directly associated with a case.
       operationId: getCaseLevelResults
+      tags:
+        - Cases
       parameters:
         - in: path
           name: case_id
