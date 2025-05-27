@@ -12,7 +12,10 @@
         "description": "Result",
         "title": "Judiciary Result",
         "type": "string",
-        "default": ""
+        "default": "",
+        "examples": [
+          "This is the example outcome of case results"
+        ]
       }
     },
     "required": ["resultText"],
