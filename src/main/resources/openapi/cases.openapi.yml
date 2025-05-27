@@ -58,7 +58,7 @@ components:
           title: Judiciary Result
           description: Result
           default: ""
-          example: 'This is the example outcome of case results'
+          example: "This is the example outcome of case results"
       required:
         - resultText
       additionalProperties: false
