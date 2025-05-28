@@ -61,10 +61,19 @@ tasks.named('test') {
   useJUnitPlatform()
   systemProperty 'API_SPEC_VERSION', System.getProperty('API_SPEC_VERSION', '0.0.0')
   failFast = true
+  // Mockito must be added as an agent to the build see:
+  // https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+//  jvmArgs += [
+//          "-javaagent:${configurations.testRuntimeClasspath.find { it.name.contains('mockito-agent') }}"
+//  ]
   testLogging {
     events "passed", "skipped", "failed"
     exceptionFormat = 'full'
     showStandardStreams = true
+  }
+  reports {
+    junitXml.required.set(true) // For CI tools (e.g. Jenkins, GitHub Actions)
+    html.required.set(true)     // Human-readable browser report
   }
 }
 
@@ -135,7 +144,7 @@ cyclonedxBom {
   skipConfigs = ["test", "testImplementation"]
   schemaVersion = "1.6"
   componentVersion = providers.provider { project.version.toString() }
-  destination = file("$buildDir/reports")
+  destination = file("${layout.buildDirectory.get().asFile.absolutePath}/reports")
   includeBuildSystem = true
   outputName = "bom"
   outputFormat = "json"
@@ -152,7 +161,7 @@ jar {
     println "⚠️  CHANGELOG.md not found, skipping inclusion in JAR"
   }
 
-  def sbomFile = file("$buildDir/reports/bom.json")
+  def sbomFile = file("${layout.buildDirectory.get().asFile.absolutePath}/reports/bom.json")
   if (sbomFile.exists()) {
     println "✅ Including SBOM from ${sbomFile} in JAR"
     from(sbomFile) {
@@ -179,7 +188,7 @@ tasks.named("openApiGenerate") {
 openApiGenerate {
   generatorName = "spring"
   inputSpec = inputSpecFile.absolutePath
-  outputDir = "$buildDir/generated"
+  outputDir = "${layout.buildDirectory.get().asFile.absolutePath}/generated"
   apiPackage = "uk.gov.hmcts.cp.openapi.api"
   modelPackage = "uk.gov.hmcts.cp.openapi.model"
   generateModelTests = true
@@ -207,7 +216,7 @@ tasks.named('compileJava') {
 }
 
 def formatterUrl = 'https://raw.githubusercontent.com/hmcts/api-cp-code-style/refs/heads/main/config/formatter/eclipse-formatter.xml'
-def formatterPath = "$buildDir/eclipse-formatter.xml"
+def formatterPath = "${layout.buildDirectory.get().asFile.absolutePath}/eclipse-formatter.xml"
 tasks.register('downloadFormatter') {
   outputs.file(formatterPath)
   doLast {
@@ -232,7 +241,7 @@ tasks.named('spotlessJava') {
 }
 
 tasks.withType(Checkstyle).configureEach {
-  def generatedDir = file("${buildDir}/generated/src/main/java").canonicalPath
+  def generatedDir = file("${layout.buildDirectory.get().asFile.absolutePath}/generated/src/main/java").canonicalPath
   source = source.filter { file ->
     !file.canonicalPath.startsWith(generatedDir)
   }
