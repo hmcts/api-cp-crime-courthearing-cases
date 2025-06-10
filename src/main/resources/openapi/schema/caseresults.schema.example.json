@@ -1,11 +1,17 @@
 [
   {
-    "resultText": "The defendant was found guilty on all counts."
+    "resultText": "The defendant was found guilty on all counts.",
+    "caseUrn": "The example of case urn.",
+    "hearingId": "This example of case hearing id"
   },
   {
-    "resultText": "Case dismissed due to lack of evidence."
+    "resultText": "Case dismissed due to lack of evidence.",
+    "caseUrn": "The example of case urn.",
+    "hearingId": "This example of case hearing id"
   },
   {
-    "resultText": "The accused was acquitted by the jury."
+    "resultText": "The accused was acquitted by the jury.",
+    "caseUrn": "The example of case urn.",
+    "hearingId": "This example of case hearing id"
   }
 ]
