@@ -16,6 +16,24 @@
         "examples": [
           "This is the example outcome of case results"
         ]
+      },
+      "caseUrn": {
+        "description": "Case Unique Reference Number",
+        "title": "Case Urn",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "This is the example of case urn"
+        ]
+      },
+      "hearingId": {
+        "description": "Hearing Id",
+        "title": "Hearing Id",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "This is the example of case hearing id"
+        ]
       }
     },
     "required": ["resultText"],

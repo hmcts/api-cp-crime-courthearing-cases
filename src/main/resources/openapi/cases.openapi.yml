@@ -67,8 +67,22 @@ components:
           description: Result
           default: ""
           example: "This is the example outcome of case results"
+        caseUrn:
+          type: string
+          title: caseUrn
+          description: Result
+          default: ""
+          example: "This is the example outcome of case urn"
+        hearingId:
+            type: string
+            title: hearingId
+            description: Result
+            default: ""
+            example: "This is the example outcome of case hearing Id"
       required:
         - resultText
+        - caseUrn
+        - hearingId
       additionalProperties: false
 
     ErrorResponse:
