@@ -20,7 +20,7 @@ jobs:
       - name: Find OpenAPI file
         id: find_spec
         run: |
-          FILE=$(find ${FILE_PATH_OPENAPI} -name "*.openapi.yml" | head -n 1)
+          FILE=$(find ${FILE_PATH_OPENAPI} -name "openapi-spec.yml" | head -n 1)
           echo "openapi_file=$FILE" >> $GITHUB_OUTPUT
 
       - name: Assert disallowed URLs are not present
@@ -40,7 +40,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
 
@@ -66,7 +66,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
 
@@ -95,7 +95,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
 
