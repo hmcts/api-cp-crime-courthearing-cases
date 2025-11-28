@@ -27,6 +27,7 @@ public class OpenApiObjectsTest {
 
     @Test
     void generated_api_should_have_expected_methods() {
+        assertThat(CasesApi.PATH_GET_CASE_LEVEL_RESULTS).isEqualTo("/cases/{case_id}/results");
         assertThat(CasesApi.class).hasDeclaredMethods("getCaseLevelResults");
     }
 }
